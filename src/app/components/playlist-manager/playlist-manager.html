@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="header">
+    <h2>Your Playlists</h2>
+    <button mat-raised-button color="primary" (click)="isCreating = !isCreating">
+      <mat-icon>add</mat-icon> New Playlist
+    </button>
+  </div>
+
+  @if (isCreating) {
+    <div class="create-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Playlist Name</mat-label>
+        <input matInput [(ngModel)]="newPlaylistName" placeholder="My Awesome Mix">
+      </mat-form-field>
+      <button mat-flat-button color="accent" (click)="createPlaylist()">Save</button>
+    </div>
+  }
+
+  <div class="playlist-grid">
+    @for (playlist of playlists$ | async; track playlist.id) {
+      
+      <a [routerLink]="['/playlists', playlist.id]" class="playlist-link">
+        <mat-card class="playlist-card">
+          
+          <div class="playlist-cover">
+            <mat-icon>music_note</mat-icon>
+          </div>
+          
+          <mat-card-content>
+            <h3>{{ playlist.name }}</h3>
+            <p>{{ playlist.songs.length }} Songs</p>
+          </mat-card-content>
+          
+          <mat-card-actions>
+             <button mat-button color="warn" (click)="$event.stopPropagation()">DELETE</button>
+          </mat-card-actions>
+          
+        </mat-card>
+      </a>
+
+    } @empty {
+      <p>No playlists yet. Create one!</p>
+    }
+  </div>
+</div>

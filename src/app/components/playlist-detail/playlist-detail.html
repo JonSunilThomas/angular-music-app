@@ -1,0 +1,43 @@
+@if (playlist$ | async; as playlist) {
+  <div class="container">
+    
+    <div class="playlist-header">
+      <div class="cover-art">
+        <mat-icon>music_note</mat-icon>
+      </div>
+      <div class="info">
+        <span class="label">Playlist</span>
+        <h1>{{ playlist.name }}</h1>
+        <p>{{ playlist.songs.length }} songs</p>
+        
+        <button mat-fab color="primary" 
+                (click)="play(playlist.songs[0], playlist.songs)" 
+                [disabled]="!playlist.songs.length">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="track-list">
+      @for (song of playlist.songs; track song.id; let i = $index) {
+        
+        <div class="track-row" (click)="play(song, playlist.songs)">
+          
+          <span class="number">{{ i + 1 }}</span>
+          <div class="meta">
+            <span class="title">{{ song.title }}</span>
+            <span class="artist">{{ song.artist }}</span>
+          </div>
+          <span class="duration">{{ song.duration }}</span>
+        </div>
+
+      } @empty {
+        <div class="empty-state">
+          <p>This playlist is empty.</p>
+          <a routerLink="/" mat-button color="accent">Go add some songs!</a>
+        </div>
+      }
+    </div>
+
+  </div>
+}

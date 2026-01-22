@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+/* GLOBAL THEME OVERRIDES */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Deep Dark Background */
+  color: white;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Scrollbar Styling (Webkit only) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #121212; 
+}
+::-webkit-scrollbar-thumb {
+  background: #555; 
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888; 
+}
+
+/* Material Override: Make dialogs dark */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #282828 !important; /* Dark Grey Popup */
+  color: white !important;
+}
+
+/* Material Override: Make Inputs dark */
+.mat-mdc-form-field {
+  background-color: #333;
+  border-radius: 4px;
+}
+.mat-mdc-input-element {
+  color: white !important;
+}

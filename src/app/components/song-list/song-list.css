@@ -1,0 +1,93 @@
+.container {
+  padding: 30px;
+  background: linear-gradient(180deg, #202020 0%, #121212 100%); /* Subtle gradient background */
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Responsive grid */
+  gap: 24px;
+}
+
+.song-card {
+  background-color: #181818; /* Card Background */
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.3s ease;
+  border: none; /* Remove default border */
+  box-shadow: none; /* Remove default shadow for cleaner look */
+}
+
+.song-card:hover {
+  background-color: #282828; /* Lighter on hover */
+  cursor: pointer;
+}
+
+/* Image Container */
+.song-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Force square */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.song-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Truncate long titles */
+}
+
+.song-card p {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+/* Hide actions by default, show on hover (Optional, simplified here) */
+mat-card-actions {
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button[mat-icon-button] {
+  color: #1db954; /* Spotify Green */
+  background: rgba(0,0,0,0.6); /* Dark circle behind icon */
+  transition: transform 0.2s;
+}
+
+button[mat-icon-button]:hover {
+  transform: scale(1.1);
+  background: #1db954;
+  color: white;
+}
+
+/* Ensure the search text is white */
+.search-bar input {
+  color: white !important;
+}
+
+/* Adjust the icon color inside the search bar */
+.search-bar mat-icon {
+  color: #b3b3b3;
+}
+
+/* Header alignment */
+.header-row h2 {
+  margin: 0;
+}

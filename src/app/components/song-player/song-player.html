@@ -1,0 +1,36 @@
+@if (playerService.currentSong$ | async; as song) {
+  <div class="fixed-bottom-player">
+    
+    <div class="song-info">
+      <span class="song-title">{{ song.title }}</span>
+      <span class="song-artist">{{ song.artist }}</span>
+    </div>
+
+    <div class="controls-container">
+      <div class="buttons">
+        <button mat-icon-button (click)="playerService.prev()">
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+
+        <button mat-fab color="white" class="play-btn" (click)="playerService.togglePlay()">
+          <mat-icon style="color: black;">
+            {{ (playerService.isPlaying$ | async) ? 'pause' : 'play_arrow' }}
+          </mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="playerService.next()">
+          <mat-icon>skip_next</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="volume-section">
+      <mat-icon>volume_down</mat-icon>
+      <mat-slider min="0" max="1" step="0.01" style="width: 100px;">
+        <input matSliderThumb [value]="0.5" (input)="onVolumeChange($event)">
+      </mat-slider>
+      <mat-icon>volume_up</mat-icon>
+    </div>
+
+  </div>
+}

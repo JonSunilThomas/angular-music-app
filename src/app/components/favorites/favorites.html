@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="header">
+    <h2>Liked Songs</h2>
+    <mat-icon style="color: #e91e63; margin-left: 10px;">favorite</mat-icon>
+  </div>
+
+  <div class="song-grid">
+    @for (song of favoriteSongs; track song.id) {
+      <mat-card class="song-card" (click)="play(song)">
+        <img mat-card-image [src]="song.coverUrl" alt="Album Art">
+        <mat-card-content>
+          <h3>{{ song.title }}</h3>
+          <p>{{ song.artist }}</p>
+        </mat-card-content>
+        
+        <mat-card-actions>
+          <button mat-icon-button (click)="play(song); $event.stopPropagation()">
+            <mat-icon>play_circle</mat-icon>
+          </button>
+
+          <button mat-icon-button (click)="removeFavorite(song, $event)">
+            <mat-icon style="color: #e91e63;">favorite</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>favorite_border</mat-icon>
+        <p>No liked songs yet.</p>
+        <button mat-flat-button color="primary" routerLink="/">Go Discover Music</button>
+      </div>
+    }
+  </div>
+</div>

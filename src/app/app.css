@@ -1,0 +1,12 @@
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #121212;
+}
+
+.main-content {
+  margin-left: 240px; 
+  width: calc(100% - 240px); /* Precise width calculation */
+  padding-bottom: 100px; 
+  background-color: #121212;
+}

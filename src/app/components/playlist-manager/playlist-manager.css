@@ -1,0 +1,58 @@
+.container {
+  padding: 20px;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.create-form {
+  background: #333;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 100%;
+  max-width: 300px;
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.playlist-card {
+  background-color: #282828;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.playlist-card:hover {
+  transform: translateY(-5px);
+  background-color: #383838;
+}
+
+.playlist-cover {
+  height: 150px;
+  background: linear-gradient(135deg, #404040, #121212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlist-cover mat-icon {
+  font-size: 60px;
+  width: 60px;
+  height: 60px;
+  color: #b3b3b3;
+}
