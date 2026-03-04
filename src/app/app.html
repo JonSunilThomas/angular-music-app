@@ -1,10 +1,12 @@
-<div class="app-container">
-  
+<div class="app-container" [attr.data-theme]="themeService.theme()">
+
   <app-navbar></app-navbar>
 
-  <div class="main-content">
-    <router-outlet></router-outlet> </div>
+  <div class="main-content" @routeTransition>
+    <router-outlet></router-outlet>
+  </div>
 
 </div>
 
 <app-song-player></app-song-player>
+<app-loading-spinner></app-loading-spinner>

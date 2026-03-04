@@ -4,68 +4,414 @@
       "id": 1,
       "title": "Neon Lights",
       "artist": "Tech Wave",
+      "artistId": 1,
       "album": "Future Sounds",
+      "albumId": 1,
       "duration": "3:45",
-      "coverUrl": "https://picsum.photos/seed/neon/300/300",
+      "durationSeconds": 225,
+      "coverUrl": "https://picsum.photos/id/1/300/300",
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-      "genre": "Synthwave"
+      "genre": "Synthwave",
+      "isFavorite": true,
+      "playCount": 13,
+      "lyrics": "Neon lights flash across the sky\nColors dancing, spirits high\nWe ride the wave of endless night\nSynthwave dreams ignite the light\n\nVerse 2:\nPixels glow beneath the moon\nElectric hearts play a cosmic tune\nLost in code and melody\nNeon lights set us free"
     },
     {
       "id": 2,
       "title": "Midnight City",
       "artist": "M83",
+      "artistId": 2,
       "album": "Hurry Up, We're Dreaming",
+      "albumId": 2,
       "duration": "4:03",
-      "coverUrl": "https://picsum.photos/seed/mid/300/300",
+      "durationSeconds": 243,
+      "coverUrl": "https://picsum.photos/id/10/300/300",
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-      "genre": "Electronic"
+      "genre": "Electronic",
+      "isFavorite": true,
+      "playCount": 28,
+      "lyrics": "Waiting in a car, waiting for a ride in the dark\nThe city shimmers in the distance, cold\nDriving through the midnight streets\nSearching for the sound that never sleeps\n\nMidnight city, we never sleep\nRunning through the avenues so deep\nLights above, the stars align\nThis midnight city, forever mine"
     },
     {
       "id": 3,
       "title": "Retro Soul",
       "artist": "The Vibe",
+      "artistId": 3,
       "album": "Classics",
+      "albumId": 3,
       "duration": "2:50",
-      "coverUrl": "https://picsum.photos/seed/soul/300/300",
+      "durationSeconds": 170,
+      "coverUrl": "https://picsum.photos/id/100/300/300",
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-      "genre": "Soul"
+      "genre": "Soul",
+      "isFavorite": false,
+      "playCount": 9,
+      "lyrics": "Take me back to where it started\nWhen the groove was open-hearted\nRetro vibes on a Sunday morning\nSoul and rhythm without warning\n\nChorus:\nRetro soul, take me home\nTo the place where love has grown\nFeel the bass, feel the beat\nRetro soul is bittersweet"
     },
     {
       "id": 4,
       "title": "Deep Focus",
       "artist": "Coding Radio",
+      "artistId": 4,
       "album": "Work Flow",
+      "albumId": 4,
       "duration": "5:12",
-      "coverUrl": "https://picsum.photos/seed/code/300/300",
+      "durationSeconds": 312,
+      "coverUrl": "https://picsum.photos/id/1000/300/300",
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-      "genre": "Lo-Fi"
+      "genre": "Lo-Fi",
+      "isFavorite": false,
+      "playCount": 32,
+      "lyrics": "Lines of code upon the screen\nLo-fi beats, a coder dream\nDeep in focus, lost in flow\nKeyboard tapping, soft and slow\n\nChorus:\nDeep focus, quiet mind\nLeaving all the noise behind\nIn this zone, I find my space\nCode and music interlace"
     },
     {
       "id": 5,
       "title": "Mountain High",
       "artist": "Nature Sounds",
+      "artistId": 5,
       "album": "Earth",
+      "albumId": 5,
       "duration": "3:30",
-      "coverUrl": "https://picsum.photos/seed/mountain/300/300",
+      "durationSeconds": 210,
+      "coverUrl": "https://picsum.photos/id/1003/300/300",
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-      "genre": "Ambient"
+      "genre": "Ambient",
+      "isFavorite": false,
+      "playCount": 6,
+      "lyrics": "Above the clouds where eagles fly\nThe mountain peaks reach for the sky\nA gentle breeze across the ridge\nNature builds a timeless bridge\n\nChorus:\nMountain high, valley low\nWhere the crystal rivers flow\nPeace of mind, wild and free\nMountain high calls to me"
     },
     {
       "id": 6,
       "title": "Cyber Punk",
       "artist": "Glitch Mob",
+      "artistId": 6,
       "album": "2077",
+      "albumId": 6,
       "duration": "4:15",
-      "coverUrl": "https://picsum.photos/seed/cyber/300/300",
+      "durationSeconds": 255,
+      "coverUrl": "https://picsum.photos/id/1004/300/300",
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-      "genre": "Industrial"
+      "genre": "Industrial",
+      "isFavorite": false,
+      "playCount": 16,
+      "lyrics": "Chrome and steel beneath my feet\nNeon signs on every street\nData streams like falling rain\nCyber punk ignites the brain\n\nChorus:\nCyber punk, future now\nBreaking rules, take a bow\nWired in, plugged to life\nCyber punk cuts like a knife"
+    },
+    {
+      "id": 7,
+      "title": "Purple Rain",
+      "artist": "Tech Wave",
+      "artistId": 1,
+      "album": "Future Sounds",
+      "albumId": 1,
+      "duration": "3:20",
+      "durationSeconds": 200,
+      "coverUrl": "https://picsum.photos/id/1005/300/300",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "genre": "Synthwave",
+      "isFavorite": false,
+      "playCount": 18,
+      "lyrics": "Golden sun across the bay\nSummer nights that never fade away\nWaves that crash upon the shore\nOcean whispers asking for more\n\nChorus:\nOcean drive, wind in my hair\nSalt and freedom fill the air\nChasing sunsets every day\nOn this ocean drive I stay"
+    },
+    {
+      "id": 8,
+      "title": "Digital Dreams",
+      "artist": "M83",
+      "artistId": 2,
+      "album": "Hurry Up, We're Dreaming",
+      "albumId": 2,
+      "duration": "4:45",
+      "durationSeconds": 285,
+      "coverUrl": "https://picsum.photos/id/1006/300/300",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "genre": "Electronic",
+      "isFavorite": true,
+      "playCount": 23,
+      "lyrics": "Spinning vinyl late at night\nJazz cafe in amber light\nSmoke and coffee fill the room\nMelodies that fight the gloom\n\nChorus:\nVelvet jazz in smoky haze\nLost in syncopated phrase\nUprightbass and brushed hi-hat\nVelvet jazz, imagine that"
     }
   ],
   "playlists": [
     {
       "id": 1,
       "name": "Coding Focus",
-      "songs": []
+      "description": "Perfect tracks for deep coding sessions",
+      "coverUrl": "https://picsum.photos/id/250/300/300",
+      "songs": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Night Drive",
+      "description": "Synthwave vibes for late night drives",
+      "coverUrl": "https://picsum.photos/id/260/300/300",
+      "songs": [
+        1,
+        2,
+        6,
+        7
+      ]
+    }
+  ],
+  "artists": [
+    {
+      "id": 1,
+      "name": "Tech Wave",
+      "bio": "Tech Wave is a synthwave producer crafting retro-futuristic sounds that blend 80s nostalgia with modern production techniques.",
+      "photoUrl": "https://picsum.photos/id/64/300/300",
+      "genre": "Synthwave",
+      "monthlyListeners": 245000,
+      "songIds": [
+        1,
+        7
+      ],
+      "albumIds": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "M83",
+      "bio": "M83 is the electronic project of French musician Anthony Gonzalez, known for expansive shoegaze-influenced electronic music.",
+      "photoUrl": "https://picsum.photos/id/65/300/300",
+      "genre": "Electronic",
+      "monthlyListeners": 5800000,
+      "songIds": [
+        2,
+        8
+      ],
+      "albumIds": [
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "name": "The Vibe",
+      "bio": "The Vibe brings classic soul influences into the modern era with warm analog recordings and heartfelt lyrics.",
+      "photoUrl": "https://picsum.photos/id/91/300/300",
+      "genre": "Soul",
+      "monthlyListeners": 89000,
+      "songIds": [
+        3
+      ],
+      "albumIds": [
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Coding Radio",
+      "bio": "Coding Radio produces lo-fi beats designed for maximum focus and productivity.",
+      "photoUrl": "https://picsum.photos/id/103/300/300",
+      "genre": "Lo-Fi",
+      "monthlyListeners": 1200000,
+      "songIds": [
+        4
+      ],
+      "albumIds": [
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Nature Sounds",
+      "bio": "Nature Sounds blends field recordings with ambient electronic textures to create immersive soundscapes.",
+      "photoUrl": "https://picsum.photos/id/110/300/300",
+      "genre": "Ambient",
+      "monthlyListeners": 320000,
+      "songIds": [
+        5
+      ],
+      "albumIds": [
+        5
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Glitch Mob",
+      "bio": "Glitch Mob pushes the boundaries of electronic music with aggressive industrial beats and cinematic compositions.",
+      "photoUrl": "https://picsum.photos/id/177/300/300",
+      "genre": "Industrial",
+      "monthlyListeners": 750000,
+      "songIds": [
+        6
+      ],
+      "albumIds": [
+        6
+      ]
+    }
+  ],
+  "albums": [
+    {
+      "id": 1,
+      "title": "Future Sounds",
+      "artistId": 1,
+      "artistName": "Tech Wave",
+      "coverUrl": "https://picsum.photos/id/145/300/300",
+      "year": 2024,
+      "songIds": [
+        1,
+        7
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Hurry Up, We're Dreaming",
+      "artistId": 2,
+      "artistName": "M83",
+      "coverUrl": "https://picsum.photos/id/160/300/300",
+      "year": 2011,
+      "songIds": [
+        2,
+        8
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Classics",
+      "artistId": 3,
+      "artistName": "The Vibe",
+      "coverUrl": "https://picsum.photos/id/170/300/300",
+      "year": 2023,
+      "songIds": [
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Work Flow",
+      "artistId": 4,
+      "artistName": "Coding Radio",
+      "coverUrl": "https://picsum.photos/id/180/300/300",
+      "year": 2025,
+      "songIds": [
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Earth",
+      "artistId": 5,
+      "artistName": "Nature Sounds",
+      "coverUrl": "https://picsum.photos/id/190/300/300",
+      "year": 2024,
+      "songIds": [
+        5
+      ]
+    },
+    {
+      "id": 6,
+      "title": "2077",
+      "artistId": 6,
+      "artistName": "Glitch Mob",
+      "coverUrl": "https://picsum.photos/id/200/300/300",
+      "year": 2025,
+      "songIds": [
+        6
+      ]
+    }
+  ],
+  "recentlyPlayed": [
+    {
+      "songId": 8,
+      "playedAt": "2026-03-03T17:17:42.434Z",
+      "id": 1
+    },
+    {
+      "songId": 2,
+      "playedAt": "2026-03-03T17:18:22.944Z",
+      "id": 2
+    },
+    {
+      "songId": 3,
+      "playedAt": "2026-03-03T17:18:29.804Z",
+      "id": 3
+    },
+    {
+      "songId": 3,
+      "playedAt": "2026-03-03T17:18:40.766Z",
+      "id": 4
+    },
+    {
+      "songId": 4,
+      "playedAt": "2026-03-03T17:18:46.724Z",
+      "id": 5
+    },
+    {
+      "songId": 4,
+      "playedAt": "2026-03-03T17:18:48.398Z",
+      "id": 6
+    },
+    {
+      "songId": 3,
+      "playedAt": "2026-03-03T17:18:55.874Z",
+      "id": 7
+    },
+    {
+      "songId": 4,
+      "playedAt": "2026-03-03T17:18:59.258Z",
+      "id": 8
+    },
+    {
+      "songId": 5,
+      "playedAt": "2026-03-03T17:19:07.800Z",
+      "id": 9
+    },
+    {
+      "songId": 3,
+      "playedAt": "2026-03-03T17:19:10.042Z",
+      "id": 10
+    },
+    {
+      "songId": 3,
+      "playedAt": "2026-03-03T17:19:12.859Z",
+      "id": 11
+    },
+    {
+      "songId": 3,
+      "playedAt": "2026-03-03T17:19:13.819Z",
+      "id": 12
+    },
+    {
+      "songId": 4,
+      "playedAt": "2026-03-03T17:19:34.348Z",
+      "id": 13
+    },
+    {
+      "songId": 6,
+      "playedAt": "2026-03-03T17:19:47.730Z",
+      "id": 14
+    },
+    {
+      "songId": 6,
+      "playedAt": "2026-03-03T17:19:49.108Z",
+      "id": 15
+    },
+    {
+      "songId": 1,
+      "playedAt": "2026-03-03T17:20:15.857Z",
+      "id": 16
+    },
+    {
+      "songId": 4,
+      "playedAt": "2026-03-03T17:42:00.269Z",
+      "id": 17
+    },
+    {
+      "songId": 4,
+      "playedAt": "2026-03-03T17:42:01.340Z",
+      "id": 18
+    },
+    {
+      "songId": 2,
+      "playedAt": "2026-03-03T17:46:00.034Z",
+      "id": 19
+    },
+    {
+      "songId": 2,
+      "playedAt": "2026-03-03T17:53:36.984Z",
+      "id": 20
     }
   ]
 }

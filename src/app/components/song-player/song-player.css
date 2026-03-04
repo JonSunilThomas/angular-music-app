@@ -5,77 +5,152 @@
   left: 0;
   width: 100%;
   height: 90px;
-  background-color: #282828; /* Spotify-like dark grey */
+  background: linear-gradient(180deg, #12121f, #0a0a14);
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 -2px 20px rgba(106, 13, 173, 0.15);
   z-index: 1000;
-  box-sizing: border-box; /* Ensures padding doesn't break width */
+  box-sizing: border-box;
+  border-top: 1px solid rgba(106, 13, 173, 0.2);
 }
 
+/* Song Info — Left */
 .song-info {
   display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.mini-cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(106, 13, 173, 0.3);
+}
+
+.text {
+  display: flex;
   flex-direction: column;
-  min-width: 150px;
+  overflow: hidden;
 }
 
 .song-title {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .song-artist {
   font-size: 12px;
-  color: #b3b3b3;
+  color: #cfcfe6;
 }
 
-.controls {
+/* Center Controls */
+.center-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
-}
-
-/* Override Angular Material button color for the dark theme */
-button[mat-icon-button] {
-  color: white;
-}
-
-button[mat-icon-button]:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-/* Add these to your existing CSS */
-.controls-container {
-  display: flex;
-  justify-content: center;
-  flex: 1; /* Takes up center space */
+  flex: 1;
+  max-width: 600px;
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.control-btn {
+  color: #cfcfe6 !important;
+  transition: color 0.2s;
+}
+
+.control-btn:hover {
+  color: white !important;
+}
+
+.control-btn.active {
+  color: #B57EDC !important;
 }
 
 .play-btn {
-  transform: scale(0.9); /* Make FAB slightly smaller */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
 }
 
+.play-btn:hover {
+  transform: scale(1.05);
+}
+
+.play-btn mat-icon {
+  color: #0a0a14;
+  font-size: 24px;
+}
+
+/* Seek Bar */
+.seek-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.time {
+  font-size: 11px;
+  color: #cfcfe6;
+  min-width: 35px;
+  text-align: center;
+}
+
+.seek-slider {
+  flex: 1;
+  --mdc-slider-handle-color: #B57EDC;
+  --mdc-slider-focus-handle-color: #B57EDC;
+  --mdc-slider-hover-handle-color: #B57EDC;
+  --mdc-slider-active-track-color: #B57EDC;
+  --mdc-slider-inactive-track-color: rgba(181, 126, 220, 0.2);
+  --mdc-slider-handle-width: 12px;
+  --mdc-slider-handle-height: 12px;
+}
+
+/* Volume — Right */
 .volume-section {
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-width: 150px;
+  gap: 6px;
+  min-width: 160px;
   justify-content: flex-end;
 }
 
-/* Fix Slider Color */
-mat-slider {
-  --mdc-slider-handle-color: #1db954;
-  --mdc-slider-focus-handle-color: #1db954;
-  --mdc-slider-hover-handle-color: #1db954;
-  --mdc-slider-active-track-color: #1db954;
+.vol-icon {
+  font-size: 20px;
+  color: #cfcfe6;
+}
+
+.volume-slider {
+  width: 100px;
+  --mdc-slider-handle-color: #B57EDC;
+  --mdc-slider-focus-handle-color: #B57EDC;
+  --mdc-slider-hover-handle-color: #B57EDC;
+  --mdc-slider-active-track-color: #B57EDC;
+  --mdc-slider-inactive-track-color: rgba(181, 126, 220, 0.2);
+  --mdc-slider-handle-width: 10px;
+  --mdc-slider-handle-height: 10px;
 }

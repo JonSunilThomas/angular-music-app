@@ -5,16 +5,41 @@
   </div>
 
   <nav>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a routerLink="/songs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <mat-icon>home</mat-icon> Home
     </a>
-    
+
     <a routerLink="/playlists" routerLinkActive="active">
       <mat-icon>library_music</mat-icon> Playlists
     </a>
-    
-    <a href="#">
+
+    <a routerLink="/artists" routerLinkActive="active">
+      <mat-icon>people</mat-icon> Artists
+    </a>
+
+    <a routerLink="/favorites" routerLinkActive="active">
       <mat-icon>favorite</mat-icon> Liked Songs
     </a>
+
+    <a routerLink="/stats" routerLinkActive="active">
+      <mat-icon>bar_chart</mat-icon> Stats
+    </a>
+  </nav>
+
+  <div class="spacer"></div>
+
+  <nav class="bottom-nav">
+    <a routerLink="/feedback" routerLinkActive="active">
+      <mat-icon>feedback</mat-icon> Feedback
+    </a>
+
+    <a routerLink="/login" routerLinkActive="active">
+      <mat-icon>login</mat-icon> Log In
+    </a>
+
+    <button class="theme-toggle" (click)="toggleTheme()">
+      <mat-icon>{{ themeService.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      {{ themeService.isDark() ? 'Light Mode' : 'Dark Mode' }}
+    </button>
   </nav>
 </div>

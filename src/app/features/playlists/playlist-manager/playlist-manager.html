@@ -1,0 +1,68 @@
+<div class="container" @fadeIn>
+  <div class="header">
+    <h2>Your Playlists</h2>
+    <button mat-fab extended color="primary" class="create-btn" (click)="isCreating = !isCreating">
+      <mat-icon>{{ isCreating ? 'close' : 'add' }}</mat-icon>
+      {{ isCreating ? 'Cancel' : 'New Playlist' }}
+    </button>
+  </div>
+
+  @if (isCreating) {
+    <form class="create-form" [formGroup]="playlistForm" (ngSubmit)="createPlaylist()">
+      <mat-form-field appearance="outline">
+        <mat-label>Playlist Name</mat-label>
+        <input matInput formControlName="name" appAutoFocus placeholder="My Awesome Mix">
+        @if (playlistForm.get('name')?.hasError('required') && playlistForm.get('name')?.touched) {
+          <mat-error>Name is required</mat-error>
+        }
+        @if (playlistForm.get('name')?.hasError('minlength')) {
+          <mat-error>At least 2 characters</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description (optional)</mat-label>
+        <input matInput formControlName="description" placeholder="What's this playlist about?">
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="playlistForm.invalid">
+        Create Playlist
+      </button>
+    </form>
+  }
+
+  <div class="playlist-grid">
+    @for (playlist of playlists$ | async; track playlist.id) {
+      <a [routerLink]="['/playlists', playlist.id]" class="playlist-link">
+        <mat-card class="playlist-card" appHoverGlow>
+          <div class="playlist-cover">
+            @if (playlist.coverUrl) {
+              <img [src]="playlist.coverUrl" [alt]="playlist.name" loading="lazy">
+            } @else {
+              <mat-icon>music_note</mat-icon>
+            }
+          </div>
+
+          <mat-card-content>
+            <h3>{{ playlist.name }}</h3>
+            <p>{{ getPlaylistSongCount(playlist) }} Songs</p>
+            @if (playlist.description) {
+              <p class="description">{{ playlist.description }}</p>
+            }
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button mat-button class="delete-btn" (click)="deletePlaylist(playlist.id, $event)">
+              <mat-icon>delete</mat-icon> DELETE
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </a>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>library_music</mat-icon>
+        <p>No playlists yet. Create one!</p>
+      </div>
+    }
+  </div>
+</div>

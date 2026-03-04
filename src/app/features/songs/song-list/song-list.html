@@ -1,0 +1,56 @@
+<div class="container" @fadeIn>
+
+  <div class="header-row">
+    <h2>All Songs</h2>
+
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput [(ngModel)]="searchTerm" (keyup)="filterSongs()" placeholder="Search songs, artists, genres...">
+      @if (searchTerm) {
+        <button matSuffix mat-icon-button (click)="searchTerm=''; filterSongs()">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
+
+  @if (isLoading) {
+    <app-skeleton-loader />
+  } @else {
+    <div class="song-grid">
+      @for (song of filteredSongs; track song.id) {
+        <a [routerLink]="['/songs', song.id]" class="song-link">
+          <mat-card class="song-card" appHoverGlow>
+            <img mat-card-image [src]="song.coverUrl" [alt]="song.title" loading="lazy">
+            <mat-card-content>
+              <h3>{{ song.title }}</h3>
+              <p>{{ song.artist }}</p>
+              <span class="genre-badge">{{ song.genre }}</span>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button mat-icon-button (click)="play(song); $event.preventDefault(); $event.stopPropagation()" aria-label="Play">
+                <mat-icon>play_circle</mat-icon>
+              </button>
+
+              <button mat-icon-button (click)="addToPlaylist(song); $event.preventDefault(); $event.stopPropagation()" aria-label="Add to playlist">
+                <mat-icon>playlist_add</mat-icon>
+              </button>
+
+              <button mat-icon-button (click)="toggleFavorite(song, $event); $event.preventDefault()" aria-label="Toggle favorite">
+                <mat-icon [class.favorite-active]="song.isFavorite">
+                  {{ song.isFavorite ? 'favorite' : 'favorite_border' }}
+                </mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </a>
+      } @empty {
+        <div class="empty-state">
+          <mat-icon>search_off</mat-icon>
+          <p>No songs found for "{{ searchTerm }}"</p>
+        </div>
+      }
+    </div>
+  }
+</div>

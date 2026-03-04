@@ -1,22 +1,50 @@
 import { Routes } from '@angular/router';
-import { SongListComponent } from './components/song-list/song-list';
-import { PlaylistManagerComponent } from './components/playlist-manager/playlist-manager';
-import { PlaylistDetailComponent } from './components/playlist-detail/playlist-detail';
-import { FavoritesComponent } from './components/favorites/favorites'; // Import the new page
+import { PreloadAllModules } from '@angular/router';
 
 export const routes: Routes = [
-  // Default Home Page
-  { path: '', component: SongListComponent },
-  
-  // Playlist Management
-  { path: 'playlists', component: PlaylistManagerComponent },
-  
-  // Playlist Detail (e.g., /playlists/1)
-  { path: 'playlists/:id', component: PlaylistDetailComponent },
+  // Songs (detail pages at /songs/:id)
+  {
+    path: 'songs',
+    loadChildren: () => import('./features/songs/songs.routes').then(m => m.songsRoutes)
+  },
 
-  // Favorites Page
-  { path: 'favorites', component: FavoritesComponent },
-  
-  // Redirect unknown URLs to Home
-  { path: '**', redirectTo: '' }
+  // Playlists
+  {
+    path: 'playlists',
+    loadChildren: () => import('./features/playlists/playlists.routes').then(m => m.playlistsRoutes)
+  },
+
+  // Artists
+  {
+    path: 'artists',
+    loadChildren: () => import('./features/artists/artists.routes').then(m => m.artistsRoutes)
+  },
+
+  // Favorites
+  {
+    path: 'favorites',
+    loadChildren: () => import('./features/favorites/favorites.routes').then(m => m.favoritesRoutes)
+  },
+
+  // Recently Played & Stats
+  {
+    path: 'stats',
+    loadChildren: () => import('./features/recently-played/recently-played.routes').then(m => m.recentlyPlayedRoutes)
+  },
+
+  // Auth
+  {
+    path: 'login',
+    loadChildren: () => import('./features/auth/auth.routes').then(m => m.authRoutes)
+  },
+
+  // Feedback
+  {
+    path: 'feedback',
+    loadChildren: () => import('./features/feedback/feedback.routes').then(m => m.feedbackRoutes)
+  },
+
+  // Redirect unknown paths
+  { path: '', redirectTo: 'songs', pathMatch: 'full' },
+  { path: '**', redirectTo: 'songs' }
 ];

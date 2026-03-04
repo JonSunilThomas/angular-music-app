@@ -1,0 +1,131 @@
+.container {
+  padding: 30px;
+  background: linear-gradient(180deg, #14142b 0%, #0f0f1a 100%);
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.search-bar {
+  width: 320px;
+}
+
+.search-bar input {
+  color: white !important;
+}
+
+.search-bar mat-icon {
+  color: #cfcfe6;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.song-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.song-card {
+  background-color: #1a1a2e;
+  border-radius: 12px;
+  padding: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.song-card:hover {
+  background-color: #222244;
+  transform: translateY(-4px);
+}
+
+.song-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.song-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-card p {
+  font-size: 14px;
+  color: #cfcfe6;
+  margin: 0;
+}
+
+.genre-badge {
+  display: inline-block;
+  font-size: 11px;
+  color: #B57EDC;
+  background: rgba(181, 126, 220, 0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+
+mat-card-actions {
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button[mat-icon-button] {
+  color: #B57EDC;
+  background: rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+
+button[mat-icon-button]:hover {
+  transform: scale(1.1);
+  background: #6A0DAD;
+  color: white;
+}
+
+.favorite-active {
+  color: #B57EDC !important;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #cfcfe6;
+  padding: 60px;
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  opacity: 0.5;
+}

@@ -1,0 +1,51 @@
+@if (playlistView$ | async; as view) {
+  <div class="container" @fadeIn>
+
+    <div class="playlist-header">
+      <div class="cover-art">
+        @if (view.playlist.coverUrl) {
+          <img [src]="view.playlist.coverUrl" [alt]="view.playlist.name">
+        } @else {
+          <mat-icon>music_note</mat-icon>
+        }
+      </div>
+      <div class="info">
+        <span class="label">Playlist</span>
+        <h1>{{ view.playlist.name }}</h1>
+        @if (view.playlist.description) {
+          <p class="description">{{ view.playlist.description }}</p>
+        }
+        <p class="song-count">{{ view.songs.length }} songs</p>
+
+        <button mat-fab class="play-all-btn"
+                (click)="playAll(view.songs)"
+                [disabled]="!view.songs.length">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="track-list">
+      @for (song of view.songs; track song.id; let i = $index) {
+        <div class="track-row"
+             [appHighlightPlaying]="(currentSong$ | async)?.id === song.id"
+             (click)="play(song, view.songs)">
+          <span class="number">{{ i + 1 }}</span>
+          <img class="track-cover" [src]="song.coverUrl" [alt]="song.title" loading="lazy">
+          <div class="meta">
+            <a class="title song-detail-link" [routerLink]="['/songs', song.id]" (click)="$event.stopPropagation()">{{ song.title }}</a>
+            <span class="artist">{{ song.artist }}</span>
+          </div>
+          <span class="genre">{{ song.genre }}</span>
+          <span class="duration">{{ song.duration }}</span>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <p>This playlist is empty.</p>
+          <a routerLink="/" mat-button class="discover-btn">Go add some songs!</a>
+        </div>
+      }
+    </div>
+
+  </div>
+}

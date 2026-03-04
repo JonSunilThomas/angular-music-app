@@ -1,0 +1,150 @@
+.container {
+  min-height: 100vh;
+  background: #0f0f1a;
+}
+
+.gradient-header {
+  background: linear-gradient(135deg, #6A0DAD, #3a0a5e);
+  padding: 40px 30px 30px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.subtitle {
+  color: #cfcfe6;
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.content {
+  padding: 30px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.track-list {
+  background: rgba(26, 26, 46, 0.5);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+.track-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.track-row:hover {
+  background-color: rgba(106, 13, 173, 0.15);
+}
+
+.rank {
+  color: #cfcfe6;
+  width: 30px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.track-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.meta {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+}
+
+.artist {
+  font-size: 13px;
+  color: #cfcfe6;
+}
+
+.duration {
+  color: #cfcfe6;
+  font-size: 13px;
+}
+
+.play-count {
+  color: #B57EDC;
+  font-size: 12px;
+}
+
+.genre-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.genre-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.genre-label {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 14px;
+}
+
+.genre-count {
+  color: #cfcfe6;
+  font-size: 12px;
+}
+
+.genre-bar {
+  height: 6px;
+  background: #1a1a2e;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.genre-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6A0DAD, #B57EDC);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.empty-state {
+  text-align: center;
+  color: #cfcfe6;
+  padding: 40px;
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  opacity: 0.5;
+  margin-bottom: 12px;
+}

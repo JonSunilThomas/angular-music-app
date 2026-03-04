@@ -1,0 +1,152 @@
+@if (songView$ | async; as view) {
+  <div class="song-detail-container" @fadeIn>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg" [style.background-image]="'url(' + view.song.coverUrl + ')'"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <img class="cover-art" [src]="view.song.coverUrl" [alt]="view.song.title" loading="lazy">
+
+        <div class="song-info">
+          <span class="label">Song</span>
+          <h1 class="song-title">{{ view.song.title }}</h1>
+
+          <div class="meta-row">
+            @if (view.artist) {
+              <a class="artist-link" [routerLink]="['/artists', view.artist.id]">
+                <img class="artist-thumb" [src]="view.artist.photoUrl" [alt]="view.artist.name">
+                {{ view.artist.name }}
+              </a>
+            } @else {
+              <span class="artist-name">{{ view.song.artist }}</span>
+            }
+            <span class="dot">·</span>
+            <span class="album-name">{{ view.song.album }}</span>
+            <span class="dot">·</span>
+            <span class="duration">{{ view.song.duration }}</span>
+          </div>
+
+          <div class="genre-chip">
+            <mat-chip-set>
+              <mat-chip>{{ view.song.genre }}</mat-chip>
+            </mat-chip-set>
+          </div>
+
+          <div class="action-buttons">
+            <button mat-fab class="play-btn" (click)="play(view.song)">
+              <mat-icon>play_arrow</mat-icon>
+            </button>
+
+            <button mat-icon-button class="action-icon" (click)="toggleFavorite(view.song)">
+              <mat-icon [class.favorite-active]="view.song.isFavorite">
+                {{ view.song.isFavorite ? 'favorite' : 'favorite_border' }}
+              </mat-icon>
+            </button>
+
+            <button mat-icon-button class="action-icon" (click)="addToPlaylist(view.song)">
+              <mat-icon>playlist_add</mat-icon>
+            </button>
+          </div>
+
+          @if (view.song.playCount) {
+            <p class="play-count">{{ view.song.playCount | number }} plays</p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <div class="detail-body">
+
+      <!-- Artist Section -->
+      @if (view.artist) {
+        <section class="artist-section">
+          <h2>About the Artist</h2>
+          <mat-card class="artist-card" appHoverGlow>
+            <a [routerLink]="['/artists', view.artist.id]" class="artist-card-link">
+              <img class="artist-photo" [src]="view.artist.photoUrl" [alt]="view.artist.name">
+              <div class="artist-info">
+                <h3>{{ view.artist.name }}</h3>
+                <p class="artist-genre">{{ view.artist.genre }}</p>
+                <p class="artist-listeners">{{ view.artist.monthlyListeners | number }} monthly listeners</p>
+                <p class="artist-bio">{{ view.artist.bio }}</p>
+              </div>
+            </a>
+          </mat-card>
+        </section>
+      }
+
+      <!-- Album Section -->
+      @if (view.album) {
+        <section class="album-section">
+          <h2>From the Album</h2>
+          <mat-card class="album-card" appHoverGlow>
+            <div class="album-content">
+              <img class="album-cover" [src]="view.album.coverUrl" [alt]="view.album.title" loading="lazy">
+              <div class="album-info">
+                <h3>{{ view.album.title }}</h3>
+                <p>{{ view.album.artistName }} · {{ view.album.year }}</p>
+              </div>
+            </div>
+          </mat-card>
+        </section>
+      }
+
+      <!-- Lyrics Section -->
+      @if (view.song.lyrics) {
+        <section class="lyrics-section">
+          <h2><mat-icon>lyrics</mat-icon> Lyrics</h2>
+          <div class="lyrics-card">
+            <div class="lyrics-text">
+              @for (line of view.song.lyrics.split('\n'); track $index) {
+                @if (line.trim() === '') {
+                  <br>
+                } @else {
+                  <p class="lyrics-line">{{ line }}</p>
+                }
+              }
+            </div>
+          </div>
+        </section>
+      } @else {
+        <section class="lyrics-section">
+          <h2><mat-icon>lyrics</mat-icon> Lyrics</h2>
+          <div class="lyrics-card no-lyrics">
+            <mat-icon>music_off</mat-icon>
+            <p>No lyrics available for this song.</p>
+          </div>
+        </section>
+      }
+
+      <mat-divider></mat-divider>
+
+      <!-- Related Songs Section -->
+      @if (view.relatedSongs.length > 0) {
+        <section class="related-section">
+          <h2>You Might Also Like</h2>
+          <div class="related-grid">
+            @for (related of view.relatedSongs; track related.id) {
+              <a [routerLink]="['/songs', related.id]" class="related-link">
+                <mat-card class="related-card" appHoverGlow
+                          [appHighlightPlaying]="(currentSong$ | async)?.id === related.id">
+                  <img class="related-cover" [src]="related.coverUrl" [alt]="related.title" loading="lazy">
+                  <div class="related-info">
+                    <h4>{{ related.title }}</h4>
+                    <p>{{ related.artist }}</p>
+                    <span class="related-genre">{{ related.genre }}</span>
+                  </div>
+                  <button mat-icon-button class="related-play"
+                          (click)="playRelated(related, view.relatedSongs); $event.preventDefault(); $event.stopPropagation()">
+                    <mat-icon>play_circle</mat-icon>
+                  </button>
+                </mat-card>
+              </a>
+            }
+          </div>
+        </section>
+      }
+
+    </div>
+  </div>
+}

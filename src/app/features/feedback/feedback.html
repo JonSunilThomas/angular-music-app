@@ -1,0 +1,57 @@
+<div class="feedback-container" @fadeIn>
+  <div class="feedback-card">
+    <h2>Send Feedback</h2>
+    <p class="subtitle">We'd love to hear what you think</p>
+
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput appAutoFocus formControlName="name" placeholder="Your name">
+        <mat-icon matPrefix>person</mat-icon>
+        @if (feedbackForm.get('name')?.hasError('required') && feedbackForm.get('name')?.touched) {
+          <mat-error>Name is required</mat-error>
+        }
+        @if (feedbackForm.get('name')?.hasError('minlength')) {
+          <mat-error>Min 2 characters</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="your@email.com">
+        <mat-icon matPrefix>email</mat-icon>
+        @if (feedbackForm.get('email')?.hasError('required') && feedbackForm.get('email')?.touched) {
+          <mat-error>Email is required</mat-error>
+        }
+        @if (feedbackForm.get('email')?.hasError('email')) {
+          <mat-error>Invalid email</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          @for (cat of categories; track cat.value) {
+            <mat-option [value]="cat.value">{{ cat.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="message" rows="5" placeholder="Tell us your thoughts..."></textarea>
+        <mat-hint align="end">{{ charCount }} / 500</mat-hint>
+        @if (feedbackForm.get('message')?.hasError('required') && feedbackForm.get('message')?.touched) {
+          <mat-error>Message is required</mat-error>
+        }
+        @if (feedbackForm.get('message')?.hasError('minlength')) {
+          <mat-error>Min 10 characters</mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-flat-button class="submit-btn" type="submit" [disabled]="feedbackForm.invalid">
+        <mat-icon>send</mat-icon> Submit Feedback
+      </button>
+    </form>
+  </div>
+</div>

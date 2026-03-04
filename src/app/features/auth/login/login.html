@@ -1,0 +1,60 @@
+<div class="login-container" @fadeIn>
+  <div class="login-card">
+    <div class="logo">
+      <mat-icon>graphic_eq</mat-icon>
+      <h1>MusicApp</h1>
+    </div>
+    <p class="subtitle">Log in to continue</p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput appAutoFocus
+               type="email"
+               [(ngModel)]="email"
+               name="email"
+               required
+               email
+               #emailField="ngModel"
+               placeholder="your@email.com">
+        <mat-icon matPrefix>email</mat-icon>
+        @if (emailField.invalid && emailField.touched) {
+          <mat-error>
+            @if (emailField.errors?.['required']) { Email is required }
+            @if (emailField.errors?.['email']) { Invalid email format }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput
+               [type]="hidePassword ? 'password' : 'text'"
+               [(ngModel)]="password"
+               name="password"
+               required
+               minlength="6"
+               #passwordField="ngModel"
+               placeholder="Enter password">
+        <mat-icon matPrefix>lock</mat-icon>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        @if (passwordField.invalid && passwordField.touched) {
+          <mat-error>
+            @if (passwordField.errors?.['required']) { Password is required }
+            @if (passwordField.errors?.['minlength']) { Minimum 6 characters }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe" class="remember">
+        Remember me
+      </mat-checkbox>
+
+      <button mat-flat-button class="login-btn" type="submit" [disabled]="loginForm.invalid">
+        Log In
+      </button>
+    </form>
+  </div>
+</div>

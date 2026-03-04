@@ -1,40 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
-/* GLOBAL THEME OVERRIDES */
+/* ═══════════════════════════════════════════════
+   GLOBAL STYLES — Purple-themed Music App
+   ═══════════════════════════════════════════════ */
+
 html, body {
   height: 100%;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #121212; /* Deep Dark Background */
-  color: white;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  background-color: #0f0f1a;
+  color: #ffffff;
+  overflow-x: hidden;
 }
 
-/* Scrollbar Styling (Webkit only) */
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #121212; 
+  background: #0f0f1a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #555; 
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #888; 
-}
-
-/* Material Override: Make dialogs dark */
-.mat-mdc-dialog-container .mdc-dialog__surface {
-  background-color: #282828 !important; /* Dark Grey Popup */
-  color: white !important;
-}
-
-/* Material Override: Make Inputs dark */
-.mat-mdc-form-field {
-  background-color: #333;
+  background: #6A0DAD;
   border-radius: 4px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background: #B57EDC;
+}
+
+/* ─── Material Dialog Overrides ─── */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #1a1a2e !important;
+  color: white !important;
+  border: 1px solid rgba(106, 13, 173, 0.2);
+}
+
+/* ─── Material Form Field Overrides ─── */
+.mat-mdc-form-field {
+  background-color: rgba(26, 26, 46, 0.8);
+  border-radius: 8px;
+}
+
 .mat-mdc-input-element {
   color: white !important;
+}
+
+.mat-mdc-select-value {
+  color: white !important;
+}
+
+/* ─── Snackbar Styles ─── */
+.error-snackbar .mdc-snackbar__surface {
+  background-color: #d32f2f !important;
+}
+
+.success-snackbar .mdc-snackbar__surface {
+  background-color: #6A0DAD !important;
+}
+
+/* ─── Focus / Selection ─── */
+::selection {
+  background: rgba(106, 13, 173, 0.4);
+  color: white;
+}
+
+/* ─── Global Link Styles ─── */
+a {
+  color: #B57EDC;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d4a5f0;
+}
+
+/* ─── Angular Material Checkbox/Radio Purple Override ─── */
+.mat-mdc-checkbox .mdc-checkbox__background {
+  border-color: #B57EDC !important;
+}
+
+/* ─── Light Theme Overrides ─── */
+[data-theme="light"] {
+  background-color: #f5f3ff !important;
+  color: #1a1a2e !important;
+}
+
+[data-theme="light"] .mat-mdc-form-field {
+  background-color: rgba(240, 235, 255, 0.9);
+}
+
+[data-theme="light"] .mat-mdc-input-element {
+  color: #1a1a2e !important;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f5f3ff;
+}
+
+/* ─── Fade-in utility ─── */
+.fade-in {
+  animation: fadeInAnim 0.3s ease-out;
+}
+
+@keyframes fadeInAnim {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

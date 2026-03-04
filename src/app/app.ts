@@ -1,22 +1,20 @@
-// src/app/app.ts
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-// 1. IMPORT THE COMPONENTS
-// Check your file structure. If your player file is named 'song-player.ts',
-// ensure the path ends in just './components/song-player/song-player'
-import { SongListComponent } from './components/song-list/song-list';
 import { SongPlayerComponent } from './components/song-player/song-player';
-import { NavbarComponent } from './components/navbar/navbar'; // (or just navbar/navbar)
+import { NavbarComponent } from './components/navbar/navbar';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner.component';
+import { ThemeService } from './services/theme.service';
+import { routeTransition } from './shared/animations/route-transition';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  // 2. ADD THEM TO THIS ARRAY
-  imports: [RouterOutlet, SongListComponent, SongPlayerComponent, NavbarComponent], 
+  imports: [RouterOutlet, SongPlayerComponent, NavbarComponent, LoadingSpinnerComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
+  animations: [routeTransition]
 })
-export class AppComponent { // It's okay if this class is named AppComponent
+export class AppComponent {
   title = 'music-app';
+  themeService = inject(ThemeService);
 }

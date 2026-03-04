@@ -1,0 +1,39 @@
+<div class="container" @fadeIn>
+  <div class="gradient-header">
+    <div class="header-content">
+      <mat-icon class="header-icon">favorite</mat-icon>
+      <div>
+        <h2>Liked Songs</h2>
+        <p class="subtitle">{{ favoriteSongs.length }} songs</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="song-grid">
+    @for (song of favoriteSongs; track song.id) {
+      <mat-card class="song-card" appHoverGlow (click)="play(song)">
+        <img mat-card-image [src]="song.coverUrl" [alt]="song.title" loading="lazy">
+        <mat-card-content>
+          <h3>{{ song.title }}</h3>
+          <p>{{ song.artist }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-icon-button (click)="play(song); $event.stopPropagation()" aria-label="Play">
+            <mat-icon>play_circle</mat-icon>
+          </button>
+
+          <button mat-icon-button (click)="removeFavorite(song, $event)" aria-label="Remove favorite">
+            <mat-icon class="favorite-icon">favorite</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>favorite_border</mat-icon>
+        <p>No liked songs yet.</p>
+        <button mat-flat-button class="discover-btn" routerLink="/">Go Discover Music</button>
+      </div>
+    }
+  </div>
+</div>

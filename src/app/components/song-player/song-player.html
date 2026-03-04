@@ -1,35 +1,66 @@
 @if (playerService.currentSong$ | async; as song) {
   <div class="fixed-bottom-player">
-    
+
+    <!-- Song Info (Left) -->
     <div class="song-info">
-      <span class="song-title">{{ song.title }}</span>
-      <span class="song-artist">{{ song.artist }}</span>
+      <img [src]="song.coverUrl" [alt]="song.title" class="mini-cover">
+      <div class="text">
+        <span class="song-title">{{ song.title }}</span>
+        <span class="song-artist">{{ song.artist }}</span>
+      </div>
     </div>
 
-    <div class="controls-container">
+    <!-- Center Controls -->
+    <div class="center-section">
       <div class="buttons">
-        <button mat-icon-button (click)="playerService.prev()">
+        <button mat-icon-button
+                class="control-btn"
+                [class.active]="(playerService.shuffle$ | async)"
+                (click)="playerService.toggleShuffle()">
+          <mat-icon>shuffle</mat-icon>
+        </button>
+
+        <button mat-icon-button class="control-btn" (click)="playerService.prev()">
           <mat-icon>skip_previous</mat-icon>
         </button>
 
-        <button mat-fab color="white" class="play-btn" (click)="playerService.togglePlay()">
-          <mat-icon style="color: black;">
+        <button class="play-btn" (click)="playerService.togglePlay()">
+          <mat-icon>
             {{ (playerService.isPlaying$ | async) ? 'pause' : 'play_arrow' }}
           </mat-icon>
         </button>
 
-        <button mat-icon-button (click)="playerService.next()">
+        <button mat-icon-button class="control-btn" (click)="playerService.next()">
           <mat-icon>skip_next</mat-icon>
         </button>
+
+        @if (playerService.repeat$ | async; as repeatMode) {
+          <button mat-icon-button
+                  class="control-btn"
+                  [class.active]="repeatMode !== 'none'"
+                  (click)="playerService.toggleRepeat()">
+            <mat-icon>{{ getRepeatIcon(repeatMode) }}</mat-icon>
+          </button>
+        }
+      </div>
+
+      <!-- Seek Bar -->
+      <div class="seek-row">
+        <span class="time">{{ (playerService.currentTime$ | async) | durationFormat }}</span>
+        <mat-slider min="0" max="100" step="0.1" class="seek-slider">
+          <input matSliderThumb [value]="(playerService.progress$ | async) ?? 0" (input)="onSeek($event)">
+        </mat-slider>
+        <span class="time">{{ (playerService.duration$ | async) | durationFormat }}</span>
       </div>
     </div>
 
+    <!-- Volume (Right) -->
     <div class="volume-section">
-      <mat-icon>volume_down</mat-icon>
-      <mat-slider min="0" max="1" step="0.01" style="width: 100px;">
-        <input matSliderThumb [value]="0.5" (input)="onVolumeChange($event)">
+      <mat-icon class="vol-icon">volume_down</mat-icon>
+      <mat-slider min="0" max="1" step="0.01" class="volume-slider">
+        <input matSliderThumb [value]="(playerService.volume$ | async) ?? 0.5" (input)="onVolumeChange($event)">
       </mat-slider>
-      <mat-icon>volume_up</mat-icon>
+      <mat-icon class="vol-icon">volume_up</mat-icon>
     </div>
 
   </div>

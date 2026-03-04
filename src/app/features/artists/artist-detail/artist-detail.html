@@ -1,0 +1,60 @@
+@if (artistView$ | async; as view) {
+  <div class="container" @fadeIn>
+    <div class="artist-header">
+      <div class="artist-photo">
+        <img [src]="view.artist.photoUrl" [alt]="view.artist.name">
+      </div>
+      <div class="info">
+        <span class="label">Artist</span>
+        <h1>{{ view.artist.name }}</h1>
+        <p class="listeners">{{ view.artist.monthlyListeners | number }} monthly listeners</p>
+        <p class="bio">{{ view.artist.bio }}</p>
+
+        <div class="actions">
+          <button mat-fab class="play-all-btn" (click)="playAll(view.songs)">
+            <mat-icon>play_arrow</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>Popular Tracks</h2>
+      <div class="track-list">
+        @for (song of view.songs; track song.id; let i = $index) {
+          <div class="track-row"
+               [appHighlightPlaying]="(currentSong$ | async)?.id === song.id"
+               (click)="play(song, view.songs)">
+            <span class="number">{{ i + 1 }}</span>
+            <img class="track-cover" [src]="song.coverUrl" [alt]="song.title" loading="lazy">
+            <div class="meta">
+              <span class="title">{{ song.title }}</span>
+              <span class="album-name">{{ song.album }}</span>
+            </div>
+            <span class="play-count">{{ song.playCount || 0 | number }} plays</span>
+            <span class="duration">{{ song.duration }}</span>
+          </div>
+        } @empty {
+          <p class="empty">No tracks available</p>
+        }
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Albums</h2>
+      <div class="album-grid">
+        @for (album of view.albums; track album.id) {
+          <mat-card class="album-card">
+            <img mat-card-image [src]="album.coverUrl" [alt]="album.title" loading="lazy">
+            <mat-card-content>
+              <h3>{{ album.title }}</h3>
+              <p>{{ album.year }} · {{ album.songIds.length }} songs</p>
+            </mat-card-content>
+          </mat-card>
+        } @empty {
+          <p class="empty">No albums available</p>
+        }
+      </div>
+    </section>
+  </div>
+}

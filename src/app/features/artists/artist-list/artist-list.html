@@ -1,0 +1,23 @@
+<div class="container" @fadeIn>
+  <h2>Artists</h2>
+
+  <div class="artist-grid">
+    @for (artist of artists$ | async; track artist.id) {
+      <a [routerLink]="['/artists', artist.id]" class="artist-link">
+        <div class="artist-card" appHoverGlow>
+          <div class="artist-photo">
+            <img [src]="artist.photoUrl" [alt]="artist.name" loading="lazy">
+          </div>
+          <h3>{{ artist.name }}</h3>
+          <p class="genre">{{ artist.genre }}</p>
+          <p class="listeners">{{ artist.monthlyListeners | number }} monthly listeners</p>
+        </div>
+      </a>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>person_off</mat-icon>
+        <p>No artists found</p>
+      </div>
+    }
+  </div>
+</div>
