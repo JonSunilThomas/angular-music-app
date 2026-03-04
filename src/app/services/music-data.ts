@@ -3,11 +3,12 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { tap, shareReplay, catchError, map, switchMap } from 'rxjs/operators';
 import { Song, Playlist, Artist, Album, RecentlyPlayed } from '../models/music';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class MusicDataService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = environment.apiUrl;
 
   // Cache subjects
   private songsCache$: Observable<Song[]> | null = null;

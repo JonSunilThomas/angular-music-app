@@ -3,10 +3,12 @@ import { BehaviorSubject, interval, animationFrameScheduler } from 'rxjs';
 import { map, distinctUntilChanged, filter } from 'rxjs/operators';
 import { Song, RepeatMode, PlaybackState } from '../models/music';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AudioPlayerService {
   private http = inject(HttpClient);
+  private apiUrl = environment.apiUrl;
   private audio = new Audio();
   private queue: Song[] = [];
   private originalQueue: Song[] = [];
@@ -199,7 +201,7 @@ export class AudioPlayerService {
     this.recentlyPlayedSubject.next(recent.slice(0, 20));
 
     // Persist to backend
-    this.http.post('http://localhost:3000/recentlyPlayed', {
+    this.http.post(`${this.apiUrl}/recentlyPlayed`, {
       songId: song.id,
       playedAt: new Date().toISOString()
     }).subscribe({ error: () => {} });
@@ -212,7 +214,7 @@ export class AudioPlayerService {
     this.playCountTimer = setTimeout(() => {
       const count = (song.playCount ?? 0) + 1;
       song.playCount = count;
-      this.http.patch(`http://localhost:3000/songs/${song.id}`, { playCount: count })
+      this.http.patch(`${this.apiUrl}/songs/${song.id}`, { playCount: count })
         .subscribe({ error: () => {} });
     }, 3000); // Only persist after 3s of actual listening
   }

@@ -1,0 +1,11 @@
+{
+  "name": "music-app-api",
+  "version": "1.0.0",
+  "description": "JSON Server backend for music-app",
+  "scripts": {
+    "start": "json-server --watch db.json --port $PORT"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}
